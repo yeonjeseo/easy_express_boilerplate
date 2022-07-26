@@ -4,14 +4,14 @@ import passport from 'passport';
 import helmet from 'helmet';
 import config from './config/general.config.js';
 import entrypoint from './routes/index.js';
-import { localStrategy } from './config/passport.config.js';
+import { localStrategy, jwtStrategy } from './config/passport.config.js';
 import errorHandler from './utils/errorHandler.js';
 
 const PORT = config.PORT;
 const app = express();
 
 localStrategy();
-
+jwtStrategy();
 app.use(passport.initialize());
 
 app.use(helmet());
