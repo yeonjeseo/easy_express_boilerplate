@@ -20,8 +20,6 @@ export const readAllUsers = async (req, res) => {
 
 /**
  * @description 회원가입 api
- * @param {*} req
- * @param {*} res
  * @returns
  */
 export const postUser = async (req, res) => {

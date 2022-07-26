@@ -1,11 +1,10 @@
 import express from 'express';
-import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import helmet from 'helmet';
 import config from './config/general.config.js';
 import entrypoint from './routes/index.js';
 // import passportConfig from './passport/index.js';
-import localStrategy from './passport/localStrategy.js';
+import { localStrategy } from './config/passport.config.js';
 import passport from 'passport';
 
 const PORT = config.PORT;
