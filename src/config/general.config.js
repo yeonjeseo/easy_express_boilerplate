@@ -3,6 +3,10 @@ import { NODE_ENV_schema } from '../utils/validation.js';
 
 const envVars = process.env;
 
+/**
+ * NODE_ENV 는 스크립트로 입력 받음
+ * 세 개의 값 중 하나만 허용
+ */
 NODE_ENV_schema.validateAsync(envVars.NODE_ENV)
   .then((res) => console.log(res))
   .catch((err) => console.log(err));
