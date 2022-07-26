@@ -1,6 +1,7 @@
 import Sequelize, { QueryTypes } from 'sequelize';
 import config from '../../config/general.config.js';
-import User from './users.model.js';
+import _User from './users.model.js';
+import _Post from './post.model.js';
 
 const env = config.NODE_ENV;
 const sequelizeConfig = config.sequelize[env];
@@ -11,8 +12,13 @@ const sequelize = new Sequelize(
   sequelizeConfig.password,
   sequelizeConfig
 );
-
 const { DataTypes } = Sequelize;
+
+const User = _User(sequelize, DataTypes);
+const Post = _Post(sequelize, DataTypes);
+
+User.hasMany(Post);
+Post.belongsTo(User);
 
 sequelize.sync({ alter: true }).then(() => console.log('MySQL connected! 🐬'));
 
@@ -20,6 +26,7 @@ const db = {};
 
 db.sequelize = sequelize;
 db.QueryTypes = QueryTypes;
-db.Users = User(sequelize, DataTypes);
+db.Users = User;
+db.Posts = Post;
 
 export default db;

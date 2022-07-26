@@ -1,6 +1,6 @@
 export default (sequelize, DataTypes) =>
   sequelize.define(
-    'User',
+    'Post',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -8,20 +8,16 @@ export default (sequelize, DataTypes) =>
         AutoIncrement: true,
         comment: '주 식별자',
       },
-      account: {
+      user_id: {
         type: DataTypes.STRING(255),
         allowNull: false,
-        comment: '계정 이름',
+        comment: '게시물 주인 id',
       },
-      name: {
+      title: {
         type: DataTypes.STRING(255),
         allowNull: false,
-      },
-      password: {
-        type: DataTypes.STRING(255),
-        allowNull: false,
-        defaultValue: '123456',
+        comment: '게시물 제목',
       },
     },
-    { sequelize, tableName: 'users', timestamps: true, charset: 'utf8', collation: 'utf8_general_ci' }
+    { sequelize, tableName: 'posts', timestamps: true, charset: 'utf8', collation: 'utf8_general_ci' }
   );
