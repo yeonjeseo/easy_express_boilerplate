@@ -12,3 +12,10 @@ const sequelize = new Sequelize(
 );
 
 sequelize.authenticate().then(() => sequelize.sync({ alter: true }).then(() => console.log('MySQL connected! 🐬')));
+
+const db = {};
+
+db.sequelize = sequelize;
+db.QueryTypes = QueryTypes;
+
+export default db;
