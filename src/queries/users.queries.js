@@ -13,3 +13,5 @@ export const insertUser = (account, name, t) =>
     raw: true,
     transaction: t,
   });
+
+export const findUserByPk = async (id, t) => db.Users.findByPk(id, { transaction: t });

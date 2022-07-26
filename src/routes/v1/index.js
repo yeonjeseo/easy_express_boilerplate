@@ -4,9 +4,11 @@
  */
 import express from 'express';
 import userRouter from './users.routes.js';
+import authRouter from './authentication.routes.js';
 
 const v1Router = express.Router();
 
 v1Router.use('/users', userRouter);
+v1Router.use('/authenticate', authRouter);
 
 export default v1Router;
