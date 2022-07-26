@@ -98,3 +98,52 @@ const errorHandler = (error, req, res, next) => {
 `confing/general.config.js`에서만 `process.env` 참조
 
 Node 환경 (NODE_ENV) 은 npm script에서 지정하도록 설정 (package.json 참고)
+
+NODE_ENV에 따라 host 설정 값이 자동으로 바뀌도록 하여, human error 줄이기 위함
+
+```jsx
+// config/general.config.js
+const config = {
+  NODE_ENV: envVars.NODE_ENV,
+  sequelize: {
+    local: {
+      username: envVars.LOCAL_DB_USERNAME,
+      password: envVars.LOCAL_DB_PASSWORD,
+      database: envVars.LOCAL_DB_DATABASE,
+      host: envVars.LOCAL_DB_HOST,
+      dialect: 'mysql',
+      logging: false,
+      timezone: '+09:00',
+    },
+    development: {
+      username: envVars.DEV_DB_USERNAME,
+      password: envVars.DEV_DB_PASSWORD,
+      database: envVars.DEV_DB_DATABASE,
+      host: envVars.DEV_DB_HOST,
+      dialect: 'mysql',
+      logging: false,
+      timezone: '+09:00',
+    },
+    production: {
+      username: envVars.PROD_DB_USERNAME,
+      password: envVars.PROD_DB_PASSWORD,
+      database: envVars.PROD_DB_DATABASE,
+      host: envVars.PROD_DB_HOST,
+      dialect: 'mysql',
+      logging: false,
+      timezone: '+09:00',
+    },
+  },
+};
+
+// models/mysql/index.js
+import config from '../../config/general.config.js';
+const env = config.NODE_ENV;
+const sequelizeConfig = config.sequelize[env];
+const sequelize = new Sequelize(
+  sequelizeConfig.database,
+  sequelizeConfig.username,
+  sequelizeConfig.password,
+  sequelizeConfig
+);
+```
