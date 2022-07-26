@@ -9,8 +9,10 @@ const envVars = process.env;
  */
 NODE_ENV_schema.validateAsync(envVars.NODE_ENV)
   .then((res) => console.log(res))
-  .catch((err) => console.log(err));
-// console.log(envVars);
+  .catch((err) => {
+    console.log(err);
+    process.exit();
+  });
 
 const config = {
   NODE_ENV: envVars.NODE_ENV,
