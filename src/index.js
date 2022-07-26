@@ -1,2 +1,3 @@
 import 'dotenv/config';
-import './config/general.config.js';
+import './app.js';
+import './models/mysql/index.js';
