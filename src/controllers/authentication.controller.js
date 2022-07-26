@@ -4,7 +4,7 @@ import config from '../config/general.config.js';
 
 const JWT_SECRET = config.JWT_SECRET;
 
-export const localAuthentication = async (req, res) => {
+export const localAuthentication = async (req, res, next) => {
   try {
     passport.authenticate('local', { session: false }, (error, user, info) => {
       if (error) throw error;
@@ -19,7 +19,6 @@ export const localAuthentication = async (req, res) => {
       return res.status(200).json({ accessToken });
     })(req, res);
   } catch (e) {
-    console.log(e);
-    return res.status(400).json();
+    return next(e, res);
   }
 };

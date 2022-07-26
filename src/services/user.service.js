@@ -28,7 +28,7 @@ export const createUser = async (account, name, password) => {
     await t.commit();
     return;
   } catch (e) {
-    console.log(e);
+    // console.log(e);
     await t.rollback();
     return Error(e);
   }

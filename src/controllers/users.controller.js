@@ -13,8 +13,7 @@ export const readAllUsers = async (req, res) => {
     // const user = await checkIfUserExist('yeonjeseo');
     return res.status(200).json();
   } catch (e) {
-    console.log(e);
-    return res.status(400).json('not ok');
+    return next(e, res);
   }
 };
 
@@ -22,15 +21,15 @@ export const readAllUsers = async (req, res) => {
  * @description 회원가입 api
  * @returns
  */
-export const postUser = async (req, res) => {
+export const postUser = async (req, res, next) => {
   try {
     const { account, name, password } = req.body;
     const user = await checkIfUserExist(account);
     if (user.length !== 0) return res.status(409).json('Already Exist');
-    await createUser(account, name, password);
+    const result = await createUser(account, name, password);
+    if (result instanceof Error) throw result;
     return res.status(200).json('ok');
   } catch (e) {
-    console.log(e);
-    return res.status(400).json('not ok');
+    return next(e, res);
   }
 };

@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { NODE_ENV_schema } from '../utils/validation.js';
+import { NODE_ENV_schema } from '../utils/joi.validation.js';
 
 const envVars = process.env;
 
