@@ -57,7 +57,7 @@ query에서는 ORM 트랜잭션 옵션을 받아 사용할 수 있도록 정의
 
 비즈니스 로직이 정의되어 있는 모듈 (service)에서는 하나의 비즈니스 로직에 하나의 트랜잭션 객체를 할당해 commit or rollback 하도록 구현
 
-## 에러 핸들링
+## 6. 에러 핸들링
 
 ### API 미들웨어
 
@@ -74,7 +74,7 @@ next 함수 호출하여 하나의 에러핸들러에서 응답 반환하도록 
 app.use(errorHandler);
 ```
 
-## 환경변수
+## 7. 환경변수
 
 `confing/general.config.js`에서만 `process.env` 참조
 
