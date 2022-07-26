@@ -4,7 +4,7 @@
 
 ## 1. 개요
 
-내 입맛대로 만들어보는 REST API boilerplate
+전혀 easy하지 않은, 내 입맛대로 만들어보는 REST API boilerplate
 
 ## 2. 폴더 구조
 
@@ -53,9 +53,13 @@ sequelize
 
 ### DB 트랜잭션
 
-query에서는 ORM 트랜잭션 옵션을 받아 사용할 수 있도록 정의
+`queries` 폴더 내 모듈에는 단일 DML을 정의하고, 필요에 따라 트랜잭션으로 묶어 사용할 수 있도록 정의
 
-비즈니스 로직이 정의되어 있는 모듈 (service)에서는 하나의 비즈니스 로직에 하나의 트랜잭션 객체를 할당해 commit or rollback 하도록 구현
+비즈니스 로직이 정의되어 있는 모듈 (`service` 폴더 내부)에서는 하나의 비즈니스 로직에 하나의 트랜잭션 객체를 할당해 commit or rollback 할 수 있도록
+
+### 관계 정의
+
+`models/mysql/index.js` 내부에 정의
 
 ## 6. 에러 핸들링
 
@@ -65,13 +69,28 @@ query에서는 ORM 트랜잭션 옵션을 받아 사용할 수 있도록 정의
 
 ### API endpoint
 
-next 함수 호출하여 하나의 에러핸들러에서 응답 반환하도록 구현
+next 함수 호출하여 하나의 에러 핸들러에서 응답 반환하도록 구현
 
-`app.js` 참고
+`app.js` 에서 에러 핸들러 설정
 
 ```jsx
-// 에러 핸들러
+// app.js
 app.use(errorHandler);
+
+// API contronller
+export const postUser = async (req, res, next) => {
+  try {
+    ...
+    ...
+  } catch (e) {
+    return next(e, res);
+  }
+
+// error handler
+const errorHandler = (error, req, res, next) => {
+  console.log('\x1b[33m%s\x1b[0m', error);
+  return res.status(400).send(error.message);
+};
 ```
 
 ## 7. 환경변수
