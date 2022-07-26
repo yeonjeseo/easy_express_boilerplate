@@ -45,7 +45,7 @@ joi, middleware 활용
 
 ## 5. 데이터베이스 - MySQL
 
-sequelize
+ORM - sequelize
 
 ### 테이블 생성
 
