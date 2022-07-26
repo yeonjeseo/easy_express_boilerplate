@@ -9,7 +9,7 @@ export default (sequelize, DataTypes) =>
         comment: '주 식별자',
       },
       user_id: {
-        type: DataTypes.STRING(255),
+        type: DataTypes.INTEGER,
         allowNull: false,
         comment: '게시물 주인 id',
       },
