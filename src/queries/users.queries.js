@@ -7,11 +7,9 @@ export const selectUserByAccount = (account, t) =>
     transaction: t,
   });
 
-export const insertUser = (account, name, t) =>
-  db.sequelize.query(`INSERT INTO Users(account, name) VALUES('${account}', '${name}')`, {
-    type: db.QueryTypes.INSERT,
-    raw: true,
-    transaction: t,
-  });
+export const insertUser = (account, name, password, t) =>
+  db.Users.create({ account, name, password }, { transaction: t });
 
 export const findUserByPk = async (id, t) => db.Users.findByPk(id, { transaction: t });
+
+export const findUserByAccount = (account, t) => db.Users.findOne({ where: { account } });

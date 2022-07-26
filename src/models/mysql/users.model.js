@@ -5,7 +5,7 @@ export default (sequelize, DataTypes) =>
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        AutoIncrement: true,
+        autoIncrement: true,
         comment: '주 식별자',
       },
       account: {

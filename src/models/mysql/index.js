@@ -20,7 +20,7 @@ const Post = _Post(sequelize, DataTypes);
 User.hasMany(Post, { foreignKey: 'user_id', sourceKey: 'id', onDelete: 'CASCADE', onUpdate: 'CASCADE' });
 Post.belongsTo(User, { foreignKey: 'user_id', sourceKey: 'id' });
 
-sequelize.sync({ force: true }).then(() => console.log('MySQL connected! 🐬'));
+sequelize.sync({ alter: true }).then(() => console.log('MySQL connected! 🐬'));
 
 const db = {};
 

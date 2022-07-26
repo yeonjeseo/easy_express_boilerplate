@@ -17,6 +17,8 @@ NODE_ENV_schema.validateAsync(envVars.NODE_ENV)
 const config = {
   NODE_ENV: envVars.NODE_ENV,
   PORT: envVars.PORT,
+  JWT_SECRET: envVars.JWT_SECRET,
+  SALT_ROUND: envVars.SALT_ROUND,
   sequelize: {
     local: {
       username: envVars.LOCAL_DB_USERNAME,

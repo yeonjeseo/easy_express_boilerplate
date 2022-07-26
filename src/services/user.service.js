@@ -4,6 +4,8 @@
  */
 
 import db from '../models/mysql/index.js';
+import bcrypt from 'bcrypt';
+import config from '../config/general.config.js';
 import { insertUser, selectUserByAccount } from '../queries/users.queries.js';
 
 export const checkIfUserExist = async (account) => {
@@ -18,10 +20,11 @@ export const checkIfUserExist = async (account) => {
   }
 };
 
-export const createUser = async (account, name) => {
+export const createUser = async (account, name, password) => {
   const t = await db.sequelize.transaction();
   try {
-    await insertUser(account, name, t);
+    const hashed = await bcrypt.hash(password, Number(config.SALT_ROUND));
+    await insertUser(account, name, hashed, t);
     await t.commit();
     return;
   } catch (e) {
