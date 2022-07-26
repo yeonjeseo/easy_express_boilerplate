@@ -8,21 +8,22 @@
 
 ## 폴더 구조
 
-```bash
-├──  node_modules
-├──  package.json
-├──  readme.md
-├──  src
-│     ├── config
-│     ├── controllers
-│     ├── middlewares
-│     ├── models
-│     ├── queries
-│     ├── routes
-│     ├── services
-│     ├── utils
-│     ├── app.js
-│     ├── index.js
+```
+├── node_modules
+├── package.json
+├── readme.md
+├── src
+│    ├── config
+│    ├── controllers
+│    ├── middlewares
+│    ├── models
+│    ├── queries
+│    ├── routes
+│    ├── services
+│    ├── utils
+│    ├── app.js
+│    └── index.js
+└── test
 ```
 
 ## 세션 관리 - 토큰 기반
