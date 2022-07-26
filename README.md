@@ -8,6 +8,7 @@
 
 ## 폴더 구조
 
+.
 +-- node_modules
 +-- package.json
 +-- readme.md
