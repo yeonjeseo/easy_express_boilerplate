@@ -20,7 +20,7 @@ export const localAuthentication = async (req, res, next) => {
       const accessToken = jwt.sign(payload, JWT_SECRET, { expiresIn: '30' });
       const refreshToken = jwt.sign(payload, JWT_SECRET, { expiresIn: '3000' });
 
-      return res.status(200).json({ accessToken });
+      return res.status(200).json({ accessToken, refreshToken });
     })(req, res);
   } catch (e) {
     return next(e, res);
