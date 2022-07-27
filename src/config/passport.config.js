@@ -30,7 +30,6 @@ export const jwtStrategy = () =>
         const { userId } = payload;
         const user = await findUserByPk(userId);
 
-        console.log(user);
         if (!user) {
           console.log('사용자 없음');
           return done(null, false, { message: 'user not exist' });
