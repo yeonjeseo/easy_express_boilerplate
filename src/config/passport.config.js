@@ -16,7 +16,7 @@ const jwtOptions = {
 };
 
 /**
- * AUTHORIZATION
+ * AUTHORIZATION - 인가, 권한
  * jwt 전략은 jwt token 유효성 검사, decode까지 알아서 해줌
  */
 export const jwtStrategy = () =>
@@ -33,7 +33,7 @@ export const jwtStrategy = () =>
         console.log(user);
         if (!user) {
           console.log('사용자 없음');
-          return done(null, false, { message: '존재하는 회원이 없습니다.' });
+          return done(null, false, { message: 'user not exist' });
         }
 
         return done(null, user);
@@ -45,7 +45,7 @@ export const jwtStrategy = () =>
   );
 
 /**
- * AUTHENTICATION
+ * AUTHENTICATION - 인증, 패스워드 인증 ,생제 인증 등
  */
 export const localStrategy = () =>
   passport.use(

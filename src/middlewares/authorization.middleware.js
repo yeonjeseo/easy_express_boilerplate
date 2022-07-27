@@ -7,7 +7,13 @@ export const logInOnly = async (req, res, next) => {
        * Your logic here
        */
       if (error) throw error;
-      if (!user) return res.status(401).json('Not Authorized!');
+      if (info) {
+        if (info.message === 'jwt expired') return res.status(401).json('토큰 만료');
+
+        if (info.message === 'No auth token') return res.status(401).json('토큰 없음');
+
+        if (info.message === 'user not exist') return res.status(404).json('User Not Found!');
+      }
       req.user = user.dataValues;
       next();
     })(req, res);
