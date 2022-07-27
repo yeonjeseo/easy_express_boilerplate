@@ -45,7 +45,7 @@ joi, middleware 활용
 
 ## 5. 데이터베이스 - MySQL
 
-sequelize
+ORM - sequelize
 
 ### 테이블 생성
 
@@ -55,7 +55,7 @@ sequelize
 
 `queries` 폴더 내 모듈에는 단일 DML을 정의하고, 필요에 따라 트랜잭션으로 묶어 사용할 수 있도록 정의
 
-비즈니스 로직이 정의되어 있는 모듈 (`service` 폴더 내부)에서는 하나의 비즈니스 로직에 하나의 트랜잭션 객체를 할당해 commit or rollback 할 수 있도록
+비즈니스 로직이 정의되어 있는 모듈 (`service` 폴더 내부)에서는 하나의 비즈니스 로직에 하나의 트랜잭션 객체를 할당해 commit or rollback 하도록 
 
 ### 관계 정의
 
