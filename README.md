@@ -4,7 +4,7 @@
 
 ## 1. 개요
 
-전혀 easy하지 않은, 내 입맛대로 만들어보는 REST API boilerplate
+REST API boilerplate using Node.js, express
 
 ## 2. 폴더 구조
 
