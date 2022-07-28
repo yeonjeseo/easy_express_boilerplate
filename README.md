@@ -15,6 +15,7 @@ REST API boilerplate using Node.js, express
 ├── src
 │    ├── config
 │    ├── controllers
+│    ├── graphql
 │    ├── middlewares
 │    ├── models
 │    ├── queries
