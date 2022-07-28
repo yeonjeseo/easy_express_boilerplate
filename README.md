@@ -155,6 +155,8 @@ const sequelize = new Sequelize(
 
 REST API에 대응하는 query, mutation 구현 buildSchema, GraphQLSchema 중 GraphQLSchema로 schema 구현
 
+GraphQL 로 로그인 기능을 구현하기 위해 graphql-passport 패키지 설치
+
 ## 9. In-memory storage 사용
 
 JWT 토큰 저장소로 redis 채택
