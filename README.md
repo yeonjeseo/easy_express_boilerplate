@@ -151,3 +151,7 @@ const sequelize = new Sequelize(
 ## 8. GraphQL
 
 REST API에 대응하는 query, mutation 구현 buildSchema, GraphQLSchema 중 GraphQLSchema로 schema 구현
+
+## 9. In-memory storage 사용
+
+JWT 토큰 저장소로 redis 채택
