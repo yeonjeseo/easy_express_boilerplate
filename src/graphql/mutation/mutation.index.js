@@ -1,4 +1,4 @@
-import { GraphQLInputObjectType, GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'graphql';
+import { GraphQLObjectType } from 'graphql';
 import { SignupUserTypeConfig } from './users/users.mutation.types.js';
 
 const MutationType = new GraphQLObjectType({

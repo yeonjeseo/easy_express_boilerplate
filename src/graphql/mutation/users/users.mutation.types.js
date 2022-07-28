@@ -1,4 +1,5 @@
-import { GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'graphql';
+import { GraphQLNonNull, GraphQLString } from 'graphql';
+import { createUser } from './users.mutation.resolvers.js';
 
 export const SignupUserTypeConfig = {
   name: 'Signup',
@@ -9,9 +10,11 @@ export const SignupUserTypeConfig = {
     name: { type: new GraphQLNonNull(GraphQLString) },
     password: { type: new GraphQLNonNull(GraphQLString) },
   },
-  resolve: (root, args, context, info) => {
+  resolve: async (root, args, context, info) => {
     const { account, name, password } = args;
-    console.log(account, name, password);
-    return 'asdasd';
+
+    const result = await createUser(account, name, password);
+
+    return result;
   },
 };

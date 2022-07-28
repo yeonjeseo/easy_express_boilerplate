@@ -1,6 +1,6 @@
 import { GraphQLList, GraphQLObjectType, GraphQLString } from 'graphql';
-import { getAllUsers } from './users/users.resolvers.js';
-import { UserType } from './users/users.types.js';
+import { getAllUsers } from './users/users.query.resolvers.js';
+import { UserType } from './users/users.query.types.js';
 
 const QueryType = new GraphQLObjectType({
   name: 'Query',
