@@ -4,7 +4,7 @@
 
 ## 1. 개요
 
-전혀 easy하지 않은, 내 입맛대로 만들어보는 REST API boilerplate
+REST API boilerplate using Node.js, express
 
 ## 2. 폴더 구조
 
@@ -77,6 +77,8 @@ next 함수 호출하여 하나의 에러 핸들러에서 응답 반환하도록
 // app.js
 app.use(errorHandler);
 
+
+//req에 로거 메세지 실어 보내기
 // API contronller
 export const postUser = async (req, res, next) => {
   try {
