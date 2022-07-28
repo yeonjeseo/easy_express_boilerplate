@@ -7,6 +7,6 @@ export const validateSignupBody = async (req, res, next) => {
     next();
   } catch (e) {
     console.log(e);
-    return res.status(400).json('not ok');
+    return res.status(499).json('not ok');
   }
 };

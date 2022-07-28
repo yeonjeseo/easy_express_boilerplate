@@ -1,6 +1,5 @@
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
-import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import { findUserByAccount, findUserByPk } from '../queries/users.queries.js';
@@ -19,6 +18,7 @@ const jwtOptions = {
  * AUTHORIZATION - 인가, 권한
  * jwt 전략은 jwt token 유효성 검사, decode까지 알아서 해줌
  */
+
 export const jwtStrategy = () =>
   passport.use(
     'jwt',
@@ -63,6 +63,7 @@ export const localStrategy = () =>
         if (!isMatched) {
           return done(null, true, { message: '비밀번호가 일치하지 않습니다.' });
         }
+
         /**
          * done 호출 시, 인자를 3개 보내는데,
          * 첫번째 에러를 보낼 시, 두번째 인자로 User를 보내도 authenticate에서 받지 못함
