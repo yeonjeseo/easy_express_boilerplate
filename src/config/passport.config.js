@@ -1,5 +1,6 @@
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
+import { GraphQLLocalStrategy } from 'graphql-passport';
 import bcrypt from 'bcrypt';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import { findUserByAccount, findUserByPk } from '../queries/users.queries.js';
@@ -36,8 +37,6 @@ const jwtCallback = async (payload, done) => {
   }
 };
 
-export const jwtStrategy = () => passport.use('jwt', new JwtStrategy(jwtOptions, jwtCallback));
-
 /**
  * AUTHENTICATION - 인증, 패스워드 인증 ,생제 인증 등
  */
@@ -46,7 +45,7 @@ const localOptions = {
   passwordField: 'password',
 };
 
-const localCallback = () => async (account, password, done) => {
+const localCallback = async (account, password, done) => {
   try {
     /**
      * Your logic here
@@ -71,5 +70,19 @@ const localCallback = () => async (account, password, done) => {
     done(e);
   }
 };
+
+const graphqlOption = { passReqToCallback: true };
+
+const graphqlCallback = (req, account, password, done) => {
+  console.log('여기는 graphql 전략');
+  console.log(account);
+  console.log(password);
+  done(null, 'user');
+};
+
+export const graphqlLocalStrategy = () =>
+  passport.use('graphql-local', new GraphQLLocalStrategy(graphqlOption, graphqlCallback));
+
+export const jwtStrategy = () => passport.use('jwt', new JwtStrategy(jwtOptions, jwtCallback));
 
 export const localStrategy = () => passport.use('local', new LocalStrategy(localOptions, localCallback));

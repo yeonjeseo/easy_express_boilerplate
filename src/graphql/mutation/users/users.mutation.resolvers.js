@@ -12,3 +12,11 @@ export const createUser = async (account, name, password) => {
     return e;
   }
 };
+
+export const login = async (account, password) => {
+  try {
+  } catch (e) {
+    console.log(e);
+    return e;
+  }
+};

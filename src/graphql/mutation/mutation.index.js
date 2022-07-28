@@ -15,6 +15,12 @@ const MutationType = new GraphQLObjectType({
       },
       resolve: async (root, args, context, info) => {
         const { account, password } = args;
+
+        const result = await context.authenticate('graphql-local', {
+          account,
+          password,
+        });
+        console.log(result);
         console.log(account, password);
         return '32r892h3jr9qjwr9d';
       },
