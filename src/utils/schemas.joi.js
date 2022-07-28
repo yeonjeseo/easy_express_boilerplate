@@ -7,3 +7,8 @@ export const signupSchema = Joi.object().keys({
   name: Joi.string().required(),
   password: Joi.string().required(),
 });
+
+export const loginBodySchema = Joi.object().keys({
+  account: Joi.string().required(),
+  password: Joi.string().required(),
+});

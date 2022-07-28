@@ -23,7 +23,7 @@ export const postUser = async (req, res, next) => {
     if (result instanceof Error) throw result;
     return res.status(200).json('ok');
   } catch (e) {
-    return next(e, res);
+    return next(e, req, res);
   }
 };
 
@@ -32,6 +32,6 @@ export const getUser = async (req, res, next) => {
     console.log(req.user);
     return res.status(200).json(req.user);
   } catch (e) {
-    return next(e, res);
+    return next(e, req, res);
   }
 };

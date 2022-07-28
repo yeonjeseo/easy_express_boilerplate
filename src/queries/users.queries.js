@@ -7,6 +7,8 @@ export const selectUserByAccount = (account, t) =>
     transaction: t,
   });
 
+export const findAllUsers = (t) => db.Users.findAll({ attributes: ['account', 'name'], transaction: t });
+
 export const insertUser = (account, name, password, t) =>
   db.Users.create({ account, name, password }, { transaction: t });
 
