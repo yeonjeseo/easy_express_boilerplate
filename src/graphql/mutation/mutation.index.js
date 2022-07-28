@@ -1,4 +1,5 @@
-import { GraphQLNonNull, GraphQLObjectType, GraphQLString } from 'graphql';
+import { GraphQLNonNull, GraphQLObjectType, GraphQLString, GraphQLUnionType } from 'graphql';
+import { publishToken } from '../../services/authenticate.service.js';
 import { SignupUserTypeConfig } from './users/users.mutation.types.js';
 
 const MutationType = new GraphQLObjectType({
@@ -13,16 +14,18 @@ const MutationType = new GraphQLObjectType({
         account: { type: new GraphQLNonNull(GraphQLString) },
         password: { type: new GraphQLNonNull(GraphQLString) },
       },
-      resolve: async (root, args, context, info) => {
+      resolve: async (root, args, context) => {
         const { account, password } = args;
 
-        const result = await context.authenticate('graphql-local', {
+        const { user, info } = await context.authenticate('graphql-local', {
           account,
           password,
         });
-        console.log(result);
-        console.log(account, password);
-        return '32r892h3jr9qjwr9d';
+
+        if (user === false || user === true) return info.message;
+        const tokens = await publishToken(user);
+
+        return JSON.stringify(tokens);
       },
     },
   },

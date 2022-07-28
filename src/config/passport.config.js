@@ -1,10 +1,10 @@
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import { GraphQLLocalStrategy } from 'graphql-passport';
-import bcrypt from 'bcrypt';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import { findUserByAccount, findUserByPk } from '../queries/users.queries.js';
 import config from './general.config.js';
+import { comparePlainHash } from '../utils/bcrypt.js';
 
 /**
  * AUTHORIZATION - 인가, 권한
@@ -30,7 +30,7 @@ const jwtCallback = async (payload, done) => {
       return done(null, false, { message: 'user not exist' });
     }
 
-    return done(null, user);
+    return done(null, user.dataValues);
   } catch (e) {
     console.error(e);
     done(e);
@@ -55,7 +55,7 @@ const localCallback = async (account, password, done) => {
       console.log('사용자 없음');
       return done(null, false, { message: '존재하는 회원이 없습니다.' });
     }
-    const isMatched = await bcrypt.compare(password, user.password);
+    const isMatched = await comparePlainHash(password, user.password);
     if (!isMatched) {
       return done(null, true, { message: '비밀번호가 일치하지 않습니다.' });
     }
@@ -64,7 +64,7 @@ const localCallback = async (account, password, done) => {
      * done 호출 시, 인자를 3개 보내는데,
      * 첫번째 에러를 보낼 시, 두번째 인자로 User를 보내도 authenticate에서 받지 못함
      */
-    return done(null, user);
+    return done(null, user.dataValues);
   } catch (e) {
     console.error(e);
     done(e);
@@ -73,11 +73,20 @@ const localCallback = async (account, password, done) => {
 
 const graphqlOption = { passReqToCallback: true };
 
-const graphqlCallback = (req, account, password, done) => {
-  console.log('여기는 graphql 전략');
-  console.log(account);
-  console.log(password);
-  done(null, 'user');
+const graphqlCallback = async (req, account, password, done) => {
+  // find user by account
+  const user = await findUserByAccount(account);
+  if (!user) {
+    console.log('사용자 없음');
+    return done(null, false, { message: '존재하는 회원이 없습니다.' });
+  }
+  // check if password matches
+  const isMatched = await comparePlainHash(password, user.password);
+  if (!isMatched) {
+    console.log('비밀번호 일치하지 않음');
+    return done(null, true, { message: '비밀번호가 일치하지 않습니다.' });
+  }
+  done(null, user.dataValues);
 };
 
 export const graphqlLocalStrategy = () =>
