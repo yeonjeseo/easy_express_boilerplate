@@ -13,7 +13,7 @@ export const createUser = async (account, name, password) => {
   }
 };
 
-export const login = async (account, password) => {
+export const login = async (root, args, context) => {
   try {
   } catch (e) {
     console.log(e);
