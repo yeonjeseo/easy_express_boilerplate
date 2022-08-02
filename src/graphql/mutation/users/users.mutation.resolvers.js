@@ -5,8 +5,7 @@ export const createUser = async (account, name, password) => {
   try {
     const hashed = await plainToHash(password);
     const user = await insertUser(account, name, hashed);
-    console.log(user);
-    return 'success';
+    return `${user.id}`;
   } catch (e) {
     console.log(e);
     return e;

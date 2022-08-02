@@ -10,11 +10,5 @@ export const SignupUserTypeConfig = {
     name: { type: new GraphQLNonNull(GraphQLString) },
     password: { type: new GraphQLNonNull(GraphQLString) },
   },
-  resolve: async (root, args, context, info) => {
-    const { account, name, password } = args;
-
-    const result = await createUser(account, name, password);
-
-    return result;
-  },
+  resolve: async (root, args, context, info) => await createUser(args.account, args.name, args.password),
 };
