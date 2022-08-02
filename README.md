@@ -160,3 +160,7 @@ GraphQL 로 로그인 기능을 구현하기 위해 graphql-passport 패키지 �
 ## 9. In-memory storage 사용
 
 JWT 토큰 저장소로 redis 채택
+
+## 10. Dockerize
+
+이미지 생성 성공했으나, mysql 서버 접속 필요. 컨테이너 추가 생성하거나, 임시로 RDS 붙일 예정
