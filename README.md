@@ -104,6 +104,8 @@ Node 환경 (NODE_ENV) 은 npm script에서 지정하도록 설정 (package.json
 
 NODE_ENV에 따라 host 설정 값이 자동으로 바뀌도록 하여, human error 줄이기 위함
 
+.env.test 로 환경변수 예시 포맷 작성
+
 ```jsx
 // config/general.config.js
 const config = {
@@ -163,4 +165,6 @@ JWT 토큰 저장소로 redis 채택
 
 ## 10. Dockerize
 
-이미지 생성 성공했으나, mysql 서버 접속 필요. 컨테이너 추가 생성하거나, 임시로 RDS 붙일 예정
+Dockerfile로 redis, node app 이미지 생성
+
+docker-compose로 컨테이너 실행 및 포트 바인딩
