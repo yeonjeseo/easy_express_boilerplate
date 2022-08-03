@@ -10,6 +10,8 @@ services:
     container_name: express_container
     depends_on:
       - redis
+    links:
+      - redis_container
 
   redis:
     image: redis:latest
