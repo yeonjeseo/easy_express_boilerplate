@@ -16,7 +16,8 @@ WORKDIR /easy_express_boilerplate
 COPY ./.env ./
 
 RUN npm i
-RUN npm i -g mysql2 pm2
+RUN npm i mysql2 --save
+RUN npm i -g pm2
 
 
 
