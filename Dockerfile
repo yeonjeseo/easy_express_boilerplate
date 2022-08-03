@@ -9,7 +9,7 @@ RUN apt-get update
 RUN apt-get install -y git curl build-essential
 RUN curl -fsSL https://deb.nodesource.com/setup_17.x | bash -
 RUN apt-get install -y nodejs
-RUN git clone https://github.com/yeonjeseo/easy_express_boilerplate
+RUN git clone -b main --single-branch https://github.com/yeonjeseo/easy_express_boilerplate
 
 WORKDIR /easy_express_boilerplate
 
