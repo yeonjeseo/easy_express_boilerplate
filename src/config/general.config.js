@@ -30,7 +30,15 @@ const config = {
       timezone: '+09:00',
     },
     development: {},
-    production: {},
+    production: {
+      username: envVars.PROD_DB_USERNAME,
+      password: envVars.PROD_DB_PASSWORD,
+      database: envVars.PROD_DB_DATABASE,
+      host: envVars.PROD_DB_HOST,
+      dialect: 'mysql',
+      logging: false,
+      timezone: '+09:00',
+    },
   },
   mongoose: {
     local: {},
