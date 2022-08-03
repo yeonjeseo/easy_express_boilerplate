@@ -1,7 +1,11 @@
 // const { createClient } = require('redis');
 import { createClient } from 'redis';
 
-const redisClient = createClient();
+const HOST_URL = 'redis_container';
+
+const redisClient = createClient({
+  url: `redis://${HOST_URL}:6379`,
+});
 
 redisClient.on('error', (err) => console.log(`Redis Client Error!\n${err}`));
 redisClient.on('connect', () => console.log('Redis Connected'));

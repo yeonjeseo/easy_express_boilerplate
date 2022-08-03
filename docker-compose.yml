@@ -7,4 +7,15 @@ services:
       dockerfile: 'Dockerfile'
     ports:
       - '8888:8888'
-    container_name: express_app
+    container_name: express_container
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:latest
+    hostname: redis_host
+    command: redis-server --port 6379
+    restart: always
+    ports:
+      - '6379:6379'
+    container_name: redis_container
