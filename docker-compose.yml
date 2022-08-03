@@ -1,10 +1,10 @@
-version: "3"
+version: '3'
 
-  services:
-    app:
-      build:
-        context: "./"
-        dockerfile: "Dockerfile"
-      ports:
-      - "8888:8888"
-      container_name: express_app
+services:
+  app:
+    build:
+      context: './'
+      dockerfile: 'Dockerfile'
+    ports:
+      - '8888:8888'
+    container_name: express_app
