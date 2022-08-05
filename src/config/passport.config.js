@@ -2,7 +2,7 @@ import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import { GraphQLLocalStrategy } from 'graphql-passport';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
-import { findUserByAccount, findUserByPk } from '../queries/users.queries.js';
+import { findUserByAccount, findUserByPk } from '../repositories/users.queries.js';
 import config from './general.config.js';
 import { comparePlainHash } from '../utils/bcrypt.js';
 

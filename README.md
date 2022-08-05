@@ -16,9 +16,11 @@ REST API boilerplate using Node.js, express
 │    ├── config
 │    ├── controllers
 │    ├── graphql
+│           ├── mutation
+│           └── query
 │    ├── middlewares
 │    ├── models
-│    ├── queries
+│    ├── repositories
 │    ├── routes
 │    ├── services
 │    ├── utils
