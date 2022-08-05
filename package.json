@@ -5,8 +5,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node src/index.js",
-    "dev": "export NODE_ENV=local && nodemon src/index.js",
+    "start": "cross-env NODE_ENV=production node src/index.js",
+    "dev": "cross-env NODE_ENV=development node src/index.js",
+    "local": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -30,6 +31,7 @@
     "sequelize": "^6.21.3"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "jest": "^28.1.3",
     "nodemon": "^2.0.19",
     "supertest": "^6.2.4"

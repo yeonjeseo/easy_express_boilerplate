@@ -11,6 +11,7 @@ NODE_ENV_schema.validateAsync(envVars.NODE_ENV)
   .then((res) => console.log(res))
   .catch((err) => {
     console.log(err);
+    console.log(process.env.NODE_ENV);
     process.exit();
   });
 
