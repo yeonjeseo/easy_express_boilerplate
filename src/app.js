@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import passport from 'passport';
 import helmet from 'helmet';
+import hpp from 'hpp';
 import config from './config/general.config.js';
 import entrypoint from './routes/index.js';
 import { localStrategy, jwtStrategy, graphqlLocalStrategy } from './config/passport.config.js';
@@ -20,6 +21,7 @@ graphqlLocalStrategy();
 app.use(passport.initialize());
 
 // app.use(helmet());
+app.use(hpp());
 app.use(helmet({ contentSecurityPolicy: process.env.NODE_ENV === 'production' ? undefined : false }));
 app.use('*', cors());
 app.use(express.json());
