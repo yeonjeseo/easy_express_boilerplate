@@ -2,6 +2,10 @@
 
 ---
 
+## 0. 사전 요구사항
+
+Redis, MySQL 설치
+
 ## 1. 개요
 
 REST API boilerplate using Node.js, express
