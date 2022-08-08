@@ -22,9 +22,14 @@ app.use(passport.initialize());
 
 // app.use(helmet());
 app.use(hpp());
+/**
+ * helmet contentSEcurityPolicy를 활성화하면 graphQLHTTP 접속이 안되는 문제가 있음
+ */
 app.use(helmet({ contentSecurityPolicy: process.env.NODE_ENV === 'production' ? undefined : false }));
 app.use('*', cors());
+// JSON parser
 app.use(express.json());
+// FormData parser
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', entrypoint);
