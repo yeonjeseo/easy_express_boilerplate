@@ -1,5 +1,5 @@
 const {add} = require( '../add.js')
 
-test('', () => {
+test('add', () => {
  expect(add(1, 5)).toBe(6)
 })
