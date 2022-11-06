@@ -8,7 +8,7 @@
     "start": "cross-env NODE_ENV=production node src/index.js",
     "dev": "cross-env NODE_ENV=development node src/index.js",
     "local": "nodemon src/index.js",
-    "test": "jest --watch"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
