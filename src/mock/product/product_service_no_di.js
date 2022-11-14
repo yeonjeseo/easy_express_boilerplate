@@ -14,7 +14,7 @@ class ProductService {
    * 우리가 테스트하고 싶은 것은 비즈니스 로직!
    */
   fetchAvailableItems() {
-    return this.productClient.fetchItem().then((items) => items.filter((item) => item.available));
+    return this.productClient.fetchItems().then((items) => items.filter((item) => item.available));
   }
 }
 
