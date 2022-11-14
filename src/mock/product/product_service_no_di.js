@@ -1,12 +1,9 @@
 /**
  * No dependency version - 나쁜 버전
  */
-
-const ProductClient = require('./product_client');
-
 class ProductService {
-  constructor() {
-    this.productClient = new ProductClient();
+  constructor(productClient) {
+    this.productClient = productClient;
   }
 
   /**
@@ -19,3 +16,8 @@ class ProductService {
 }
 
 module.exports = ProductService;
+
+/**
+ * 클래스 내부에서 클래스 생성, 정의 등 하는 것은 의존성 주입 원칙에 위배
+ * 외부에서 받아와야 함
+ */

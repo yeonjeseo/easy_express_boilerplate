@@ -55,3 +55,7 @@ describe('ProductService', () => {
     expect(fetchItems).toHaveBeenCalledTimes(1);
   });
 });
+
+/**
+ * 진짜와 대체 가능한 하위 테스트 도구
+ */
