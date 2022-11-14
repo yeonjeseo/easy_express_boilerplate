@@ -1,9 +1,16 @@
+/**
+ * @description mock
+ */
 const check = require('../check');
 
 describe('check', () => {
   let onSuccess;
   let onFail;
 
+  /**
+   * 각각의 테스트 케이스 실행전 초기화
+   * mock 함수를 활용
+   */
   beforeEach(() => {
     onSuccess = jest.fn();
     onFail = jest.fn();
@@ -11,7 +18,6 @@ describe('check', () => {
 
   it('should call onSuccess when predicate is true', () => {
     check(() => true, onSuccess, onFail);
-
     // expect(onSuccess.mock.calls.length).toBe(1);
     expect(onSuccess).toHaveBeenCalledTimes(1);
     // expect(onSuccess.mock.calls[0][0]).toBe('yes');
