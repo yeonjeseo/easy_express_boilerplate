@@ -16,7 +16,14 @@ class Stack {
     return result;
   }
 
-  peek() {}
+  peek() {
+    if (this.cursor === 0) return 'empty';
+    return this.arr[this.cursor - 1];
+  }
+
+  size() {
+    return this.cursor;
+  }
 }
 
 module.exports = Stack;
