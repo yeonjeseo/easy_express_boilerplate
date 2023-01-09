@@ -4,7 +4,7 @@
  */
 
 import db from '../models/mysql/index.js';
-import { insertUser, selectUserByAccount } from '../repositories/users.queries.js';
+import { insertUser, selectUserByAccount } from '../repositories/users.repository.js';
 import { plainToHash } from '../utils/bcrypt.js';
 
 export const checkIfUserExist = async (account) => {

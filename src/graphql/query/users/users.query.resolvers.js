@@ -1,4 +1,4 @@
-import { findAllUsers } from '../../../repositories/users.queries.js';
+import { findAllUsers } from '../../../repositories/users.repository.js';
 
 export const getAllUsers = async () => {
   try {

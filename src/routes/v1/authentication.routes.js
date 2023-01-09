@@ -7,4 +7,5 @@ const authRouter = express.Router();
 authRouter.route('/local').post(validateLoginBody, localAuthentication);
 authRouter.route('/refresh').post(refreshToken);
 authRouter.route('/logout').post(logout);
+
 export default authRouter;
