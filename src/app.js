@@ -42,6 +42,15 @@ app.use(
   }))
 );
 
+app.get('/test',async (req, res, next) => {
+  try {
+    
+    return res.status(200).json()
+  }catch (e) {
+    next(e)
+  }
+} )
+
 // 에러 핸들러
 app.use(errorHandler);
 

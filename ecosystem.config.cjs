@@ -6,7 +6,7 @@ module.exports = {
       name: "express-boilerplate",
       script: "./src/index.js",
       exec_mode: "cluster",
-      instances: 2,
+      instances: 4,
       merge_logs: true,
       autorestart: true,
       watch: false,
