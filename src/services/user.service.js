@@ -30,6 +30,6 @@ export const createUser = async (account, name, password) => {
   } catch (e) {
     // console.log(e);
     await t.rollback();
-    return Error(e);
+    throw e
   }
 };

@@ -20,7 +20,6 @@ export const postUser = async (req, res, next) => {
     const user = await checkIfUserExist(account);
     if (user.length !== 0) return res.status(409).json('Already Exist');
     const result = await createUser(account, name, password);
-    if (result instanceof Error) throw result;
     return res.status(200).json('ok');
   } catch (e) {
     return next(e);
