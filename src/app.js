@@ -42,6 +42,17 @@ app.use(
   }))
 );
 
+app.post('/test/:userId' , async (req, res, next) => {
+  try {
+    console.log(req.params)
+    console.log(req.query)
+    throw Error('에러가 발생했다고 가정. 이때 req.body, req.params, req.query 등의 정보를 확인해야 한다면 어떻게 해야할까?');
+    
+  }catch (e) {
+    next(e)
+  }
+})
+
 // 에러 핸들러
 app.use(errorHandler);
 
