@@ -307,3 +307,113 @@
 [req.body] : {}
 [req.query] : {}
 [req.params] : {}
+2023-02-26 16:59:14 error: 
+[API Info] GET /test errorHandler 
+[Error stack]AxiosError: Request failed with status code 404
+    at settle (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/adapters/http.js:556:11)
+    at IncomingMessage.emit (node:events:539:35)
+    at endReadableNT (node:internal/streams/readable:1345:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[req.body] : {}
+[req.query] : {}
+[req.params] : {}
+2023-02-26 16:59:46 error: 
+[API Info] GET /test errorHandler 
+[Error stack]AxiosError: Request failed with status code 404
+    at settle (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/adapters/http.js:556:11)
+    at IncomingMessage.emit (node:events:539:35)
+    at endReadableNT (node:internal/streams/readable:1345:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[req.body] : {}
+[req.query] : {}
+[req.params] : {}
+2023-02-26 17:00:15 error: 
+[API Info] GET /test errorHandler 
+[Error stack]AxiosError: Request failed with status code 404
+    at settle (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/adapters/http.js:556:11)
+    at IncomingMessage.emit (node:events:539:35)
+    at endReadableNT (node:internal/streams/readable:1345:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[req.body] : {}
+[req.query] : {}
+[req.params] : {}
+2023-02-26 17:00:50 error: 
+[API Info] GET /test errorHandler 
+[Error stack]AxiosError: Request failed with status code 404
+    at settle (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/adapters/http.js:556:11)
+    at IncomingMessage.emit (node:events:539:35)
+    at endReadableNT (node:internal/streams/readable:1345:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[req.body] : {}
+[req.query] : {}
+[req.params] : {}
+2023-02-26 17:01:17 error: 
+[API Info] GET /test errorHandler 
+[Error stack]AxiosError: Request failed with status code 404
+    at settle (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/adapters/http.js:556:11)
+    at IncomingMessage.emit (node:events:539:35)
+    at endReadableNT (node:internal/streams/readable:1345:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[req.body] : {}
+[req.query] : {}
+[req.params] : {}
+2023-02-26 17:02:57 error: 
+[API Info] GET /test errorHandler 
+[Error stack]AxiosError: Request failed with status code 401
+    at settle (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/adapters/http.js:556:11)
+    at IncomingMessage.emit (node:events:539:35)
+    at endReadableNT (node:internal/streams/readable:1345:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[req.body] : {}
+[req.query] : {}
+[req.params] : {}
+2023-02-26 17:03:43 error: 
+[API Info] GET /test errorHandler 
+[Error stack]AxiosError: Request failed with status code 404
+    at settle (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/adapters/http.js:556:11)
+    at IncomingMessage.emit (node:events:539:35)
+    at endReadableNT (node:internal/streams/readable:1345:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[req.body] : {}
+[req.query] : {}
+[req.params] : {}
+2023-02-26 17:04:21 error: 
+[API Info] GET /test errorHandler 
+[Error stack]AxiosError: Request failed with status code 404
+    at settle (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/adapters/http.js:556:11)
+    at IncomingMessage.emit (node:events:539:35)
+    at endReadableNT (node:internal/streams/readable:1345:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[req.body] : {}
+[req.query] : {}
+[req.params] : {}
+2023-02-26 17:04:29 error: 
+[API Info] GET /test errorHandler 
+[Error stack]AxiosError: Request failed with status code 400
+    at settle (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/adapters/http.js:556:11)
+    at IncomingMessage.emit (node:events:539:35)
+    at endReadableNT (node:internal/streams/readable:1345:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[req.body] : {}
+[req.query] : {}
+[req.params] : {}
+2023-02-26 17:08:53 error: 
+[API Info] GET /test errorHandler 
+[Error stack]AxiosError: Request failed with status code 400
+    at settle (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/core/settle.js:19:12)
+    at IncomingMessage.handleStreamEnd (file:///Users/jeffrey/dev/express_boilerplate/node_modules/axios/lib/adapters/http.js:556:11)
+    at IncomingMessage.emit (node:events:539:35)
+    at endReadableNT (node:internal/streams/readable:1345:12)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21)
+[req.body] : {}
+[req.query] : {}
+[req.params] : {}
