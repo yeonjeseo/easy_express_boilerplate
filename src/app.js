@@ -10,6 +10,8 @@ import errorHandler from './utils/errorHandler.js';
 import { graphqlHTTP } from 'express-graphql';
 import { graphQLSchema } from './graphql/index.js';
 import { buildContext } from 'graphql-passport';
+import {createNaverSignature} from "./utils/bcrypt.js";
+import axios from "axios";
 
 const PORT = config.PORT;
 const app = express();
@@ -32,6 +34,73 @@ app.use(express.json());
 // FormData parser
 app.use(express.urlencoded({ extended: true }));
 
+
+app.get('/test' , async (req, res, next) => {
+  try {
+    const clientId = config.NAVER_APP_ID;
+    const grantType = 'client_credentials';
+    const tokenType = 'SELF';
+    const timestamp = Date.now();
+    const signature = await createNaverSignature(timestamp);
+  
+    
+    const oAuth = await axios.post('https://api.commerce.naver.com/external/v1/oauth2/token', {
+      client_id: clientId,
+      timestamp,
+      client_secret_sign: signature,
+      grant_type: grantType,
+      type: tokenType
+    },{
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
+    
+    const token = oAuth.data.access_token;
+    
+    const getMe = await axios.get('https://api.commerce.naver.com/external/v1/seller/channels', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    const channelNo = getMe.data[0].channelNo;
+
+    const productList = await axios.post('https://api.commerce.naver.com/external/v1/products/search', {
+      page: 1,
+      size: 50,
+      orderType: 'NO',
+    }, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    })
+    // productList.data.contents.forEach((product) => console.log(product.channelProducts));
+
+    // const orderList = await axios.get(`https://api.commerce.naver.com/external/v1/pay-order/seller/orders/${productId}/product-order-ids`, {
+    //   headers: {
+    //     'Authorization': `Bearer ${token}`,
+    //   }
+    // })
+    // console.log(orderList.data);
+    
+    
+    const orderDetails = await axios.post('https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/query', {
+      productOrderIds: ['']
+    }, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    })
+    console.log(orderDetails.data.data);
+    
+    
+    res.send(oAuth.data);
+  }catch (e) {
+    console.log(e)
+    next(e)
+  }
+})
+
 app.use('/api', entrypoint);
 app.use(
   '/graphql',
@@ -42,16 +111,6 @@ app.use(
   }))
 );
 
-app.post('/test/:userId' , async (req, res, next) => {
-  try {
-    console.log(req.params)
-    console.log(req.query)
-    throw Error('에러가 발생했다고 가정. 이때 req.body, req.params, req.query 등의 정보를 확인해야 한다면 어떻게 해야할까?');
-    
-  }catch (e) {
-    next(e)
-  }
-})
 
 // 에러 핸들러
 app.use(errorHandler);
