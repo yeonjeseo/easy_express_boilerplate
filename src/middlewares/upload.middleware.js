@@ -6,6 +6,7 @@ const noFileUpload = multer({
     filename: (req, file, callback) => {
       callback(null, file.originalname);
     },
+    
   }),
 });
 
