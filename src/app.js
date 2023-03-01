@@ -93,13 +93,26 @@ app.get('/test' , async (req, res, next) => {
     // })
     // console.log(orderDetails.data.data);
     
-    const orderList = await axios.get(`https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/last-changed-statuses?lastChangedFrom=2023-02-26T00:14:51.794Z`, {
+    const orderList = await axios.get(`https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/last-changed-statuses?lastChangedFrom=2023-03-01T00:14:51.794Z`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    })
+  
+    const arr = orderList.data.data.lastChangeStatuses.map(order => order.productOrderId);
+    
+    const orderDetails = await axios.post('https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/query', {
+      productOrderIds: arr
+    }, {
       headers: {
         'Authorization': `Bearer ${token}`,
       }
     })
     
-    console.log(orderList.data.data.lastChangeStatuses);
+    // console.log(orderList.data.data.lastChangeStatuses);
+    
+    console.log(orderDetails.data);
+    orderDetails.data.data.forEach((order) => console.log(order));
     
     res.send(oAuth.data);
   }catch (e) {
