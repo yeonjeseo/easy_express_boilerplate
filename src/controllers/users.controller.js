@@ -12,7 +12,6 @@ import { checkIfUserExist, createUser } from '../services/user.service.js';
  * @returns
  */
 export const postUser = async (req, res, next) => {
-  try {
     /**
      * Your logic here
      */
@@ -21,9 +20,6 @@ export const postUser = async (req, res, next) => {
     if (user.length !== 0) return res.status(409).json('Already Exist');
     const result = await createUser(account, name, password);
     return res.status(200).json('ok');
-  } catch (e) {
-    return next(e);
-  }
 };
 
 export const getUser = async (req, res, next) => {
