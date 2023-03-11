@@ -20,6 +20,8 @@ const config = {
   PORT: envVars.PORT,
   JWT_SECRET: envVars.JWT_SECRET,
   SALT_ROUND: envVars.SALT_ROUND,
+  NAVER_APP_ID: envVars.NAVER_APP_ID,
+  NAVER_APP_SECRET: envVars.NAVER_APP_SECRET,
   sequelize: {
     local: {
       username: envVars.LOCAL_DB_USERNAME,
@@ -30,7 +32,15 @@ const config = {
       logging: false,
       timezone: '+09:00',
     },
-    development: {},
+    development: {
+      username: envVars.DEV_DB_USERNAME,
+      password: envVars.DEV_DB_PASSWORD,
+      database: envVars.DEV_DB_DATABASE,
+      host: envVars.DEV_DB_HOST,
+      dialect: 'mysql',
+      logging: false,
+      timezone: '+09:00'
+    },
     production: {
       username: envVars.PROD_DB_USERNAME,
       password: envVars.PROD_DB_PASSWORD,

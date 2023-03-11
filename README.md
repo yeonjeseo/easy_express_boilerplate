@@ -174,3 +174,8 @@ JWT 토큰 저장소로 redis 채택
 Dockerfile로 redis, node app 이미지 생성
 
 docker-compose로 컨테이너 실행 및 포트 바인딩
+
+## 11. BUGS 🐛
+
+- Sequelize-auto 로 모델을 불러올 시 FK 속성 중 ON DELETE, ON UPDATE를 불러오지 못하는 문제
+- Sequelize alter로 스키마 동기화 시, 컬럼 속성에 unique 제약을 추가하면 동기화 할 때마다 unique 인덱스가 중복 생성되는 문제. MySQL 테이블당 인덱스 컬럼은 최대 64개로, 그 이후에는 동기화 시 에러 발생

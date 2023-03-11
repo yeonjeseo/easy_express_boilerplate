@@ -19,7 +19,7 @@ export const localAuthentication = async (req, res, next) => {
       if (user === true) return res.status(401).json('Not Authorized');
 
       const tokens = await publishToken(user);
-      if (tokens instanceof Error) throw tokens;
+      if (tokens instanceof Error) return next(tokens);
       return res.status(200).json(tokens);
     })(req, res);
   } catch (e) {

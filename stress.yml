@@ -1,0 +1,12 @@
+  config:
+    target: "http://localhost:4040"
+    phases:
+      - duration: 60
+        arrivalRate: 500
+        name: Warm up
+  scenarios:
+    # We define one scenario:
+    - name: "test"
+      flow:
+        - get:
+            url: "/test"

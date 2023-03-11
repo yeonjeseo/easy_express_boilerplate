@@ -19,5 +19,11 @@ export default (sequelize, DataTypes) =>
         comment: '게시물 제목',
       },
     },
-    { sequelize, tableName: 'posts', timestamps: true, charset: 'utf8', collation: 'utf8_general_ci' }
+    {
+      sequelize,
+      tableName: 'posts',
+      timestamps: true,
+      charset: 'utf8',
+      collation: 'utf8_general_ci'
+    }
   );

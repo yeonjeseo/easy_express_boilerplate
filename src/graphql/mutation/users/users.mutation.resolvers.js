@@ -1,4 +1,4 @@
-import { insertUser } from '../../../repositories/users.queries.js';
+import { insertUser } from '../../../repositories/users.repository.js';
 import { plainToHash } from '../../../utils/bcrypt.js';
 
 export const createUser = async (account, name, password) => {

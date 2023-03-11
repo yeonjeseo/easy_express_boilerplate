@@ -6,8 +6,7 @@ export const validateSignupBody = async (req, res, next) => {
     await signupSchema.validateAsync(req.body);
     next();
   } catch (e) {
-    console.log(e);
-    return res.status(499).json('not ok');
+   next(e)
   }
 };
 
@@ -16,7 +15,6 @@ export const validateLoginBody = async (req, res, next) => {
     await loginBodySchema.validateAsync(req.body);
     next();
   } catch (e) {
-    console.log(e);
-    return res.status(499).json('not ok');
+    next(e)
   }
 };
