@@ -82,17 +82,7 @@ app.get('/test' , async (req, res, next) => {
     //   }
     // })
     // console.log(orderList.data);
-    
-    
-    // const orderDetails = await axios.post('https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/query', {
-    //   productOrderIds: ['']
-    // }, {
-    //   headers: {
-    //     'Authorization': `Bearer ${token}`,
-    //   }
-    // })
-    // console.log(orderDetails.data.data);
-    
+
     const orderList = await axios.get(`https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/last-changed-statuses?lastChangedFrom=2023-03-01T00:14:51.794Z`, {
       headers: {
         'Authorization': `Bearer ${token}`,
