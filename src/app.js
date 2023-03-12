@@ -1,5 +1,4 @@
 import express from 'express';
-import config from './config/general.config.js'
 import cors from 'cors';
 import passport from 'passport';
 import helmet from 'helmet';
@@ -85,12 +84,11 @@ app.get('/test' , async (req, res, next) => {
     // })
     // console.log(orderList.data);
 
-    const orderList = await axios.get(`https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/last-changed-statuses?lastChangedFrom=2023-03-01T00:14:51.794Z`, {
+    const orderList = await axios.get(`https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/last-changed-statuses?lastChangedFrom=2023-03-12T14:10:51.794Z&lastChangedTo=2023-03-12T23:18:51.794Z`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       }
     })
-  
     const arr = orderList.data.data.lastChangeStatuses.map(order => order.productOrderId);
     
     const orderDetails = await axios.post('https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/query', {
@@ -103,10 +101,25 @@ app.get('/test' , async (req, res, next) => {
     
     // console.log(orderList.data.data.lastChangeStatuses);
     
-    console.log(orderDetails.data);
+    // console.log(orderDetails.data);
     orderDetails.data.data.forEach((order) => console.log(order));
     
-    res.send(oAuth.data);
+    const productOrderIds = orderDetails.data.data.map(order => order.productOrder.productOrderId);
+  
+    /**
+     * @description 발주 확인 처리
+     * POST https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/confirm
+     */
+    const confirmBaljoo = await axios.post('https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/confirm', {
+      productOrderIds
+    }, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    })
+    console.log(confirmBaljoo.data)
+  
+    res.send(confirmBaljoo.data);
   }catch (e) {
     console.log(e)
     next(e)
