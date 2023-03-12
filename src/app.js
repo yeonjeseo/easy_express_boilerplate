@@ -1,4 +1,5 @@
 import express from 'express';
+import config from './config/general.config.js'
 import cors from 'cors';
 import passport from 'passport';
 import helmet from 'helmet';
@@ -22,8 +23,9 @@ graphqlLocalStrategy();
 
 app.use(passport.initialize());
 
-// app.use(helmet());
+if(config.NODE_ENV === 'production') app.use(helmet());
 app.use(hpp());
+
 /**
  * helmet contentSEcurityPolicy를 활성화하면 graphQLHTTP 접속이 안되는 문제가 있음
  */

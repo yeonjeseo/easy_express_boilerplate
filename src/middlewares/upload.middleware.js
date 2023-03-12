@@ -10,7 +10,7 @@ const noFileUpload = multer({
   }),
 });
 
-const noFileUploadSingle =  noFileUpload.single('image')
+const noFileUploadSingle =  noFileUpload.none();
 
 const noFileUploadMiddleware = async (req, res, next) => noFileUploadSingle(req, res, error => {
   try {
