@@ -84,11 +84,12 @@ app.get('/test' , async (req, res, next) => {
     // })
     // console.log(orderList.data);
 
-    const orderList = await axios.get(`https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/last-changed-statuses?lastChangedFrom=2023-03-12T14:10:51.794Z&lastChangedTo=2023-03-12T23:18:51.794Z`, {
+    const orderList = await axios.get(`https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/last-changed-statuses?lastChangedFrom=2023-03-12T14:10:00.794Z&lastChangedTo=2023-03-12T14:50:00.794Z`, {
       headers: {
         'Authorization': `Bearer ${token}`,
       }
     })
+    console.log(orderList.data)
     const arr = orderList.data.data.lastChangeStatuses.map(order => order.productOrderId);
     
     const orderDetails = await axios.post('https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/query', {
@@ -110,16 +111,37 @@ app.get('/test' , async (req, res, next) => {
      * @description 발주 확인 처리
      * POST https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/confirm
      */
-    const confirmBaljoo = await axios.post('https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/confirm', {
-      productOrderIds
-    }, {
-      headers: {
-        'Authorization': `Bearer ${token}`,
-      }
-    })
-    console.log(confirmBaljoo.data)
+    // const confirmBaljoo = await axios.post('https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/confirm', {
+    //   productOrderIds
+    // }, {
+    //   headers: {
+    //     'Authorization': `Bearer ${token}`,
+    //   }
+    // })
+    // console.log(confirmBaljoo.data)
   
-    res.send(confirmBaljoo.data);
+    /**
+     * @description 발송 처리
+     * POST https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/dispatch
+     */
+    // const myProductOrderId = productOrderIds[0];
+    // const dispatchResult = await axios.post('https://api.commerce.naver.com/external/v1/pay-order/seller/product-orders/dispatch', {
+    //   dispatchProductOrders: [
+    //     {
+    //       productOrderId: myProductOrderId,
+    //       deliveryMethod: 'DELIVERY',
+    //       deliveryCompanyCode: 'EPOST',
+    //       trackingNumber: '6892036658750',
+    //       dispatchDate: '2023-03-13T20:59:44.118+09:00'
+    //     }
+    //   ]
+    // }, {
+    //   headers: {
+    //     'Authorization': `Bearer ${token}`,
+    //   }
+    // })
+    // const data = dispatchResult.data;
+    return res.send('ok');
   }catch (e) {
     console.log(e)
     next(e)
