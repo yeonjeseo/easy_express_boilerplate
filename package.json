@@ -8,7 +8,8 @@
     "start": "cross-env NODE_ENV=production node src/index.js",
     "dev": "nodemon src/index.js",
     "local": "nodemon src/index.js",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "build": "docker build -t boilerplate:latest . && docker rmi $(docker images -f 'dangling=true' -q)"
   },
   "keywords": [],
   "author": "",
