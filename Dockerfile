@@ -12,4 +12,6 @@ RUN npm i -g pm2
 RUN npm i mysql2 --save
 RUN npm i
 
+EXPOSE 4090
+
 CMD ["npm", "run", "dev"]
